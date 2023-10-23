@@ -8,10 +8,11 @@ public class LinearEquation {
     private double tempx;
     private double tempy;
 
-    public LinearEquation(double x1, double x2, double y1, double y2) {
+
+    public LinearEquation(double x1, double y1, double x2, double y2) {
         this.x1 = x1;
-        this.x2 = x2;
         this.y1 = y1;
+        this.x2 = x2;
         this.y2 = y2;
     }
 
@@ -40,7 +41,8 @@ public class LinearEquation {
         return y1-(slope*x1);
     }
     public double SlopeWhole(){
-        return (y2-y1)/(x2-x1);
+        slope = (int)((y2-y1)/(x2-x1));
+        return slope;
     }
     public String SlopeFrac(){
         return (y2-y1)+"/"+(x2-x1);
@@ -53,15 +55,15 @@ public class LinearEquation {
     public String coord2(){
         tempx = RoundtoHundreds(x2);
         tempy = RoundtoHundreds(y2);
-        return "("+x2+", "+y2+")";
+        return "("+tempx+", "+tempy+")";
     }
     public double Distance(){
         tempx = Math.pow(x2-x1,2);
-        tempy=Math.pow(y2-y1,2);
-        return Math.sqrt(tempx+tempy);
+        tempy= Math.pow(y2-y1,2);
+        return RoundtoHundreds(Math.sqrt(tempx+tempy));
     }
     public String lineInfo(){
-        return "The two points are: " + coord1() +"and" + coord2() + "\nThe equation of the line between these points is: "+CalculateEquation()+"\nThe slope of this line is: "+slope+"\nThe y-intercept of this line is:"+CalculateB()+"\nThe distance between these points is: "+Distance();
+        return "The two points are: " + coord1() +" and " + coord2() + "\nThe equation of the line between these points is: "+CalculateEquation()+"\nThe slope of this line is: "+slope+"\nThe y-intercept of this line is:"+CalculateB()+"\nThe distance between these points is: "+Distance();
     }
     public double RoundtoHundreds(double inp){
             return (double)Math.round(inp*100) / 100;

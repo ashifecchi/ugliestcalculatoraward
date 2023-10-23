@@ -6,11 +6,13 @@ public class LinearEquationLogic {
     private double ppp;
     private double pppp;
 
-    public void Start(){
-        greeting();
-        SetCoords();
-        LinearEquation lin = new LinearEquation(p,pp,ppp,pppp);
-        System.out.println(lin.lineInfo());
+    public LinearEquationLogic(){
+
+    }
+
+    public void Run(){
+            greeting();
+            loopw();
     }
     private void greeting(){
         System.out.println("WELCOJME TO THE CALCUYLATOR !!!!!! SAY HELLO TO ME");
@@ -27,13 +29,20 @@ public class LinearEquationLogic {
         String cord = scan.nextLine();
         System.out.println("SECOND COORD");
         String cord2 = scan.nextLine();
-        p = Integer.parseInt(cord.substring(1, cord.indexOf(",")+1));
-        pp = Integer.parseInt(cord.substring(cord.indexOf(",")+1));
-        ppp = Integer.parseInt(cord2.substring(1, cord2.indexOf(",")+1));
-        pppp = Integer.parseInt(cord2.substring(cord2.indexOf(",")+1));
+        p = Integer.parseInt(cord.substring(1, cord.indexOf(",")));
+        pp = Integer.parseInt(cord.substring(cord.indexOf(",")+1,cord.indexOf(")")));
+        ppp = Integer.parseInt(cord2.substring(1, cord2.indexOf(",")));
+        pppp = Integer.parseInt(cord2.substring(cord2.indexOf(",")+1,cord.indexOf(")")));
     }
     private void loopw(){
+        String loops = "";
         System.out.println("Enter an X and find the Y!!![stop to quit] \n");
-            while ()
+            while (!loops.equals("stop")){
+                SetCoords();
+                LinearEquation line = new LinearEquation(p, pp, ppp, pppp);
+                System.out.println(line.lineInfo());
+                System.out.println("DO YOU WANNA GO AGAIN?");
+                loops = scan.nextLine();
+            }
     }
 }
