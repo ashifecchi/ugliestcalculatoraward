@@ -28,12 +28,18 @@ public class LinearEquation {
             }
         }
         double b = CalculateB();
-        if (b>0) {
-            if (rise % run == 0) {
-                return "y=" + SlopeWhole() + "x";
-            } else {
-                return "y=" + SlopeFrac() + "x";
+        if (Math.abs(slope)==1||Math.abs(slope)==1.0){
+            if (b>0) {
+                if (rise % run == 0) {
+                    return "y=" + SlopeWhole() + "x";
+                } else {
+                    return "y=" + SlopeFrac() + "x";
+                }
             }
+        }else if(slope==1) {
+            return "y=x+"+b;
+        } else if(slope==-1){
+            return "y=-x+"+b;
         }
         return "y=" + slope + "x-"+b;
     }
@@ -45,7 +51,15 @@ public class LinearEquation {
         return slope;
     }
     public String SlopeFrac(){
-        return (y2-y1)+"/"+(x2-x1);
+        double rise = (y2-y1);
+        double run = (x2-x1);
+        if (rise<0&&run<0){
+            return Math.abs(rise)+"/"+Math.abs(run);
+        }
+        if (run<0){
+            return "-"+rise+"/"+Math.abs(run);
+        }
+        return rise+"/"+run;
     }
     public String coord1(){
          tempx = RoundtoHundreds(x1);
@@ -67,5 +81,8 @@ public class LinearEquation {
     }
     public double RoundtoHundreds(double inp){
             return (double)Math.round(inp*100) / 100;
+    }
+    public double calcy(double x){
+        return (slope*x)+CalculateB();
     }
 }

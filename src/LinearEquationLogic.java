@@ -35,14 +35,30 @@ public class LinearEquationLogic {
         pppp = Integer.parseInt(cord2.substring(cord2.indexOf(",")+1,cord.indexOf(")")));
     }
     private void loopw(){
+        double xinpd = 0.0;
+        String xinp = "";
         String loops = "";
-        System.out.println("Enter an X and find the Y!!![stop to quit] \n");
             while (!loops.equals("stop")){
                 SetCoords();
-                LinearEquation line = new LinearEquation(p, pp, ppp, pppp);
-                System.out.println(line.lineInfo());
-                System.out.println("DO YOU WANNA GO AGAIN?");
-                loops = scan.nextLine();
+                if (p==ppp){
+                    if (pp==pppp){
+                        System.out.println("They have the same x...and y.. give me something else!!");
+                    } else{
+                    System.out.println("THEY HAVE THE SAME X... GIVE ME SOMETHING ELSE!");}
+                } else if(pp==pppp) {
+                    System.out.println();
+                }else {
+                        LinearEquation line = new LinearEquation(p, pp, ppp, pppp);
+                        System.out.println(line.lineInfo());
+                        while (!(xinp.equals("stop"))) {
+                            System.out.println("Enter an X and find the Y!!![stop to quit] \n");
+                            xinp = scan.nextLine();
+                            xinpd = Integer.parseInt(xinp);
+                            System.out.println(line.calcy(xinpd));
+                        }
+                        System.out.println("DO YOU WANNA GO AGAIN?");
+                        loops = scan.nextLine();
+                    }
+                }
             }
-    }
 }
