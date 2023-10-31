@@ -4,7 +4,7 @@ public class LinearEquation {
     private double x2;
     private double y1;
     private double y2;
-    private double slope;
+    //private double slope;
     private double tempx;
     private double tempy;
 
@@ -44,10 +44,10 @@ public class LinearEquation {
         return "y=" + slope + "x-"+b;
     }
     public double CalculateB(){
-        return y1-(slope*x1);
+        return y1-(SlopeWhole()*x1);
     }
     public double SlopeWhole(){
-        slope = (int)((y2-y1)/(x2-x1));
+        double slope = (double)((y2-y1)/(x2-x1));
         return slope;
     }
     public String SlopeFrac(){
@@ -77,12 +77,12 @@ public class LinearEquation {
         return RoundtoHundreds(Math.sqrt(tempx+tempy));
     }
     public String lineInfo(){
-        return "The two points are: " + coord1() +" and " + coord2() + "\nThe equation of the line between these points is: "+CalculateEquation()+"\nThe slope of this line is: "+slope+"\nThe y-intercept of this line is:"+CalculateB()+"\nThe distance between these points is: "+Distance();
+        return "The two points are: " + coord1() +" and " + coord2() + "\nThe equation of the line between these points is: "+CalculateEquation()+"\nThe slope of this line is: "+SlopeWhole()+"\nThe y-intercept of this line is:"+ CalculateB()+"\nThe distance between these points is: "+Distance();
     }
     public double RoundtoHundreds(double inp){
             return (double)Math.round(inp*100) / 100;
     }
     public double calcy(double x){
-        return (slope*x)+CalculateB();
+        return (SlopeWhole()*x)+CalculateB();
     }
 }

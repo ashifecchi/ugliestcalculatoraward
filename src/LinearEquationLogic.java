@@ -32,7 +32,7 @@ public class LinearEquationLogic {
         p = Integer.parseInt(cord.substring(1, cord.indexOf(",")));
         pp = Integer.parseInt(cord.substring(cord.indexOf(",")+1,cord.indexOf(")")));
         ppp = Integer.parseInt(cord2.substring(1, cord2.indexOf(",")));
-        pppp = Integer.parseInt(cord2.substring(cord2.indexOf(",")+1,cord.indexOf(")")));
+        pppp = Integer.parseInt(cord2.substring(cord2.indexOf(",")+1,cord2.indexOf(")")));
     }
     private void loopw(){
         double xinpd = 0.0;
@@ -53,8 +53,10 @@ public class LinearEquationLogic {
                         while (!(xinp.equals("stop"))) {
                             System.out.println("Enter an X and find the Y!!![stop to quit] \n");
                             xinp = scan.nextLine();
-                            xinpd = Integer.parseInt(xinp);
-                            System.out.println(line.calcy(xinpd));
+                            if (!(xinp.equals("stop"))) {
+                                xinpd = Integer.parseInt(xinp);
+                                System.out.println(line.calcy(xinpd));
+                            }
                         }
                         System.out.println("DO YOU WANNA GO AGAIN?");
                         loops = scan.nextLine();
