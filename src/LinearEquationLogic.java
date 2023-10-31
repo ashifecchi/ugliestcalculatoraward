@@ -54,13 +54,13 @@ public class LinearEquationLogic {
                             System.out.println("Enter an X and find the Y!!![stop to quit] \n");
                             xinp = scan.nextLine();
                             if (!(xinp.equals("stop"))) {
-                                xinpd = Integer.parseInt(xinp);
-                                System.out.println(line.calcy(xinpd));
+                                xinpd = Double.parseDouble(xinp);
+                                System.out.println("("+xinp+", "+line.calcy(xinpd)+")");
                             }
                         }
-                        System.out.println("DO YOU WANNA GO AGAIN?");
-                        loops = scan.nextLine();
                     }
+                System.out.println("DO YOU WANNA GO WITH ANOTHER SET OF CORDS AND LINES??");
+                loops = scan.nextLine();
                 }
             }
 }
